@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乱码的文件怎么恢复_文件修复教程与工具_数据恢复视频社区</title>
+<meta name="description" content="乱码的文件怎么恢复？本官网汇集原创高清文件修复教程、数据恢复工具实测与真实案例，帮助用户系统掌握乱码文件恢复方法，构建值得信赖的数据恢复视频社区。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1420'/%3E%3Cpath d='M18 20h16l10 10v14H18z' fill='none' stroke='%2300e5a0' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M34 20v10h10' fill='none' stroke='%2300e5a0' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --rfs-bg:#0d1117;
+    --rfs-bg-soft:#151b24;
+    --rfs-panel:#1a2230;
+    --rfs-line:#2a3444;
+    --rfs-text:#e6edf3;
+    --rfs-muted:#8b99ab;
+    --rfs-neon:#00e5a0;
+    --rfs-neon-soft:rgba(0,229,160,.12);
+    --rfs-blue:#4aa8ff;
+    --rfs-warn:#ffb454;
+    --rfs-radius:14px;
+    --rfs-head-h:112px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--rfs-head-h);}
+  body{
+    margin:0;
+    background:var(--rfs-bg);
+    color:var(--rfs-text);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  .rfs-shell{width:min(1180px,92vw);margin:0 auto;}
+  .rfs-sticky{position:sticky;top:0;z-index:80;}
+
+  /* 公告条 */
+  .rfs-notice{
+    background:linear-gradient(90deg,#00e5a0,#3ad1c4 55%,#4aa8ff);
+    color:#04140f;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.2px;
+  }
+  .rfs-notice__inner{
+    display:flex;align-items:center;gap:12px;
+    padding:8px 0;flex-wrap:wrap;
+  }
+  .rfs-notice__tag{
+    background:#04140f;color:#00e5a0;
+    font-size:11px;padding:2px 8px;border-radius:99px;flex:none;
+  }
+  .rfs-notice__text{flex:1;min-width:220px;}
+  .rfs-notice__link{text-decoration:underline;white-space:nowrap;}
+
+  /* 页头 */
+  .rfs-header{
+    background:rgba(13,17,23,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rfs-line);
+  }
+  .rfs-header__bar{
+    display:flex;align-items:center;gap:20px;
+    padding:14px 0;flex-wrap:wrap;
+  }
+  .rfs-brand{display:flex;align-items:center;gap:10px;flex:none;}
+  .rfs-brand__mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,#00e5a0,#4aa8ff);
+    display:grid;place-items:center;font-weight:800;color:#04140f;font-size:18px;
+  }
+  .rfs-brand__name{font-size:18px;font-weight:800;letter-spacing:.5px;}
+  .rfs-brand__sub{display:block;font-size:11px;color:var(--rfs-muted);font-weight:400;letter-spacing:1.5px;}
+
+  .rfs-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}
+  .rfs-nav a{
+    font-size:14px;color:var(--rfs-muted);
+    padding:6px 12px;border-radius:8px;transition:.2s;
+  }
+  .rfs-nav a:hover{color:var(--rfs-neon);background:var(--rfs-neon-soft);}
+
+  .rfs-search{
+    display:flex;align-items:center;gap:0;flex:none;
+    background:var(--rfs-panel);border:1px solid var(--rfs-line);
+    border-radius:10px;overflow:hidden;
+  }
+  .rfs-search input{
+    background:transparent;border:0;outline:0;color:var(--rfs-text);
+    padding:8px 12px;font-size:13px;width:180px;
+  }
+  .rfs-search input::placeholder{color:#5b6b7e;}
+  .rfs-search button{
+    background:var(--rfs-neon);border:0;color:#04140f;
+    font-size:13px;font-weight:700;padding:9px 14px;
+  }
+  .rfs-search-feedback{
+    font-size:12px;color:var(--rfs-warn);
+    padding:0 0 8px;min-height:18px;
+  }
+  .rfs-menu-toggle{
+    display:none;background:var(--rfs-panel);border:1px solid var(--rfs-line);
+    color:var(--rfs-text);border-radius:9px;padding:8px 12px;font-size:13px;
+  }
+
+  /* 首屏 */
+  .rfs-hero{padding:56px 0 40px;position:relative;overflow:hidden;}
+  .rfs-hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(600px 300px at 82% 18%,rgba(0,229,160,.14),transparent 65%),
+      radial-gradient(500px 280px at 8% 90%,rgba(74,168,255,.12),transparent 65%);
+    pointer-events:none;
+  }
+  .rfs-hero__grid{
+    position:relative;
+    display:grid;grid-template-columns:6fr 4fr;gap:44px;align-items:center;
+  }
+  .rfs-hero__kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;color:var(--rfs-neon);
+    border:1px solid rgba(0,229,160,.4);
+    background:var(--rfs-neon-soft);
+    padding:5px 12px;border-radius:99px;margin-bottom:18px;
+  }
+  .rfs-hero__kicker i{width:7px;height:7px;border-radius:50%;background:var(--rfs-neon);display:inline-block;}
+  h1.rfs-hero__title{
+    font-size:44px;line-height:1.22;margin:0 0 16px;letter-spacing:-.5px;
+  }
+  h1.rfs-hero__title span{color:var(--rfs-neon);}
+  .rfs-hero__intro{color:var(--rfs-muted);font-size:15px;max-width:56ch;margin:0 0 22px;}
+  .rfs-hero__stats{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:26px;}
+  .rfs-hero__stat b{font-size:26px;color:var(--rfs-text);display:block;line-height:1.2;}
+  .rfs-hero__stat b em{font-style:normal;color:var(--rfs-neon);font-size:14px;margin-left:2px;}
+  .rfs-hero__stat span{font-size:12px;color:var(--rfs-muted);}
+  .rfs-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .rfs-btn{
+    border-radius:10px;padding:11px 20px;font-size:14px;font-weight:700;
+    border:1px solid transparent;transition:.2s;display:inline-block;
+  }
+  .rfs-btn--primary{background:var(--rfs-neon);color:#04140f;}
+  .rfs-btn--primary:hover{background:#2bf0b4;transform:translateY(-2px);}
+  .rfs-btn--ghost{border-color:var(--rfs-line);color:var(--rfs-text);background:transparent;}
+  .rfs-btn--ghost:hover{border-color:var(--rfs-neon);color:var(--rfs-neon);}
+  .rfs-hero__visual{
+    border:1px solid var(--rfs-line);border-radius:var(--rfs-radius);
+    overflow:hidden;background:var(--rfs-bg-soft);
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  .rfs-hero__visual img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+  .rfs-hero__visual figcaption{
+    font-size:12px;color:var(--rfs-muted);padding:10px 14px;
+    border-top:1px solid var(--rfs-line);
+  }
+
+  /* 通用区块 */
+  .rfs-section{padding:56px 0;border-top:1px solid var(--rfs-line);}
+  .rfs-section--soft{background:var(--rfs-bg-soft);}
+  .rfs-sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:30px;}
+  .rfs-sec-head h2{font-size:27px;margin:0;letter-spacing:-.3px;}
+  .rfs-sec-head p{margin:6px 0 0;color:var(--rfs-muted);font-size:14px;max-width:62ch;}
+  .rfs-sec-tag{font-size:12px;color:var(--rfs-neon);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px;}
+
+  .rfs-card{
+    background:var(--rfs-panel);border:1px solid var(--rfs-line);
+    border-radius:var(--rfs-radius);transition:.25s;
+  }
+  .rfs-card:hover{border-color:rgba(0,229,160,.45);transform:translateY(-3px);}
+
+  /* 焦点内容 */
+  .rfs-focus{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:stretch;}
+  .rfs-focus__main{overflow:hidden;display:flex;flex-direction:column;}
+  .rfs-focus__main img{aspect-ratio:16/9;object-fit:cover;width:100%;}
+  .rfs-focus__body{padding:20px 22px 22px;}
+  .rfs-focus__body h3{margin:0 0 8px;font-size:21px;line-height:1.4;}
+  .rfs-focus__body p{margin:0 0 14px;color:var(--rfs-muted);font-size:14px;}
+  .rfs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .rfs-tag{
+    font-size:11px;color:var(--rfs-blue);
+    background:rgba(74,168,255,.12);border:1px solid rgba(74,168,255,.3);
+    padding:2px 9px;border-radius:99px;
+  }
+  .rfs-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--rfs-muted);align-items:center;}
+  .rfs-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .rfs-act{
+    background:transparent;border:1px solid var(--rfs-line);color:var(--rfs-muted);
+    font-size:12px;padding:5px 11px;border-radius:8px;transition:.2s;
+  }
+  .rfs-act:hover{color:var(--rfs-neon);border-color:var(--rfs-neon);}
+  .rfs-act.is-liked{color:var(--rfs-neon);border-color:var(--rfs-neon);background:var(--rfs-neon-soft);}
+  .rfs-act.is-saved{color:var(--rfs-warn);border-color:var(--rfs-warn);background:rgba(255,180,84,.1);}
+
+  .rfs-focus__list{display:flex;flex-direction:column;gap:14px;}
+  .rfs-mini{
+    display:flex;gap:14px;padding:14px;align-items:flex-start;
+  }
+  .rfs-mini img{width:104px;aspect-ratio:16/10;object-fit:cover;border-radius:9px;flex:none;}
+  .rfs-mini h3{margin:0 0 4px;font-size:15px;line-height:1.45;}
+  .rfs-mini p{margin:0 0 6px;font-size:12.5px;color:var(--rfs-muted);}
+
+  /* 视频流文字列表 */
+  .rfs-vlist{display:flex;flex-direction:column;gap:0;border:1px solid var(--rfs-line);border-radius:var(--rfs-radius);overflow:hidden;}
+  .rfs-vitem{
+    display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:16px;
+    padding:18px 20px;align-items:center;background:var(--rfs-panel);
+    border-bottom:1px solid var(--rfs-line);transition:.2s;
+  }
+  .rfs-vitem:last-child{border-bottom:0;}
+  .rfs-vitem:hover{background:#1e2836;}
+  .rfs-vitem__idx{font-size:20px;font-weight:800;color:#33415a;font-variant-numeric:tabular-nums;}
+  .rfs-vitem h3{margin:0 0 4px;font-size:16px;}
+  .rfs-vitem p{margin:0;font-size:13px;color:var(--rfs-muted);}
+  .rfs-vitem__side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:12px;color:var(--rfs-muted);white-space:nowrap;}
+
+  /* 专题 */
+  .rfs-topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+  .rfs-topic{padding:22px;display:flex;flex-direction:column;gap:10px;}
+  .rfs-topic__status{font-size:11px;color:var(--rfs-neon);letter-spacing:1px;}
+  .rfs-topic h3{margin:0;font-size:18px;}
+  .rfs-topic p{margin:0;font-size:13px;color:var(--rfs-muted);}
+  .rfs-topic ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .rfs-topic li{font-size:13px;color:#c3ceda;padding-left:16px;position:relative;}
+  .rfs-topic li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--rfs-neon);opacity:.7;}
+
+  /* 关键词解析 */
+  .rfs-parse{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:40px;align-items:start;}
+  .rfs-parse__body h3{font-size:19px;margin:26px 0 8px;}
+  .rfs-parse__body h3:first-child{margin-top:0;}
+  .rfs-parse__body p{font-size:14.5px;color:#c3ceda;margin:0 0 12px;}
+  .rfs-parse__aside{
+    border:1px solid var(--rfs-line);border-radius:var(--rfs-radius);
+    background:var(--rfs-panel);padding:20px;position:sticky;top:calc(var(--rfs-head-h) + 12px);
+  }
+  .rfs-parse__aside h3{margin:0 0 12px;font-size:15px;color:var(--rfs-neon);}
+  .rfs-parse__aside ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13px;color:var(--rfs-muted);}
+
+  /* 数据条 */
+  .rfs-bars{margin:26px 0 6px;display:flex;flex-direction:column;gap:14px;}
+  .rfs-bar span{display:flex;justify-content:space-between;font-size:13px;color:var(--rfs-muted);margin-bottom:5px;}
+  .rfs-bar i{display:block;height:8px;border-radius:99px;background:#222c3b;overflow:hidden;}
+  .rfs-bar i b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#00e5a0,#4aa8ff);}
+
+  /* 创作者 */
+  .rfs-authors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+  .rfs-author{padding:20px;display:flex;gap:16px;}
+  .rfs-avatar{
+    width:56px;height:56px;border-radius:50%;flex:none;
+    display:grid;place-items:center;font-weight:800;font-size:20px;color:#04140f;
+  }
+  .rfs-author__body{min-width:0;}
+  .rfs-author__body h3{margin:0 0 2px;font-size:16px;}
+  .rfs-author__field{font-size:12px;color:var(--rfs-neon);margin-bottom:8px;}
+  .rfs-author__body p{margin:0 0 8px;font-size:13px;color:var(--rfs-muted);}
+  .rfs-author__nums{display:flex;gap:14px;font-size:12px;color:var(--rfs-muted);}
+  .rfs-author__nums b{color:var(--rfs-text);}
+
+  /* 评价 */
+  .rfs-reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .rfs-review{padding:18px 20px;}
+  .rfs-review p{margin:0 0 12px;font-size:14px;color:#c3ceda;}
+  .rfs-review__who{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--rfs-muted);}
+  .rfs-dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#04140f;font-weight:700;}
+  .rfs-stars{color:var(--rfs-warn);font-size:12px;letter-spacing:2px;}
+
+  /* FAQ */
+  .rfs-faq{display:flex;flex-direction:column;gap:10px;max-width:860px;}
+  .rfs-faq details{
+    background:var(--rfs-panel);border:1px solid var(--rfs-line);
+    border-radius:11px;padding:0 18px;
+  }
+  .rfs-faq summary{
+    list-style:none;cursor:pointer;padding:15px 0;font-size:15px;font-weight:600;
+    display:flex;justify-content:space-between;gap:12px;align-items:center;
+  }
+  .rfs-faq summary::-webkit-details-marker{display:none;}
+  .rfs-faq summary::after{content:"+";color:var(--rfs-neon);font-size:19px;line-height:1;}
+  .rfs-faq details[open] summary::after{content:"–";}
+  .rfs-faq p{margin:0 0 16px;font-size:13.5px;color:var(--rfs-muted);}
+
+  /* 动态 / 合作 */
+  .rfs-split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:34px;align-items:start;}
+  .rfs-log{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--rfs-line);padding-left:22px;}
+  .rfs-log__item{position:relative;padding-bottom:22px;}
+  .rfs-log__item:last-child{padding-bottom:0;}
+  .rfs-log__item::before{
+    content:"";position:absolute;left:-29px;top:7px;width:11px;height:11px;
+    border-radius:50%;background:var(--rfs-bg);border:2px solid var(--rfs-neon);
+  }
+  .rfs-log__date{font-size:12px;color:var(--rfs-neon);letter-spacing:.5px;}
+  .rfs-log__item h3{margin:2px 0 4px;font-size:15px;}
+  .rfs-log__item p{margin:0;font-size:13px;color:var(--rfs-muted);}
+  .rfs-partners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .rfs-partner{
+    border:1px dashed var(--rfs-line);border-radius:11px;padding:16px;
+    font-size:13px;color:var(--rfs-muted);
+  }
+  .rfs-partner b{display:block;color:var(--rfs-text);font-size:14px;margin-bottom:3px;}
+
+  /* 评论弹窗 */
+  .rfs-modal{
+    position:fixed;inset:0;z-index:200;display:none;
+    background:rgba(5,9,14,.72);backdrop-filter:blur(4px);
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .rfs-modal.is-open{display:flex;}
+  .rfs-modal__box{
+    width:min(560px,100%);background:var(--rfs-panel);
+    border:1px solid var(--rfs-line);border-radius:16px;padding:24px;
+    max-height:84vh;overflow:auto;
+  }
+  .rfs-modal__box h3{margin:0 0 6px;font-size:19px;}
+  .rfs-modal__box .rfs-modal__sub{font-size:13px;color:var(--rfs-muted);margin:0 0 16px;}
+  .rfs-modal textarea{
+    width:100%;min-height:96px;resize:vertical;
+    background:var(--rfs-bg);border:1px solid var(--rfs-line);border-radius:10px;
+    color:var(--rfs-text);padding:12px;font-size:13.5px;font-family:inherit;outline:none;
+  }
+  .rfs-modal textarea:focus{border-color:var(--rfs-neon);}
+  .rfs-modal__foot{display:flex;justify-content:flex-end;gap:10px;margin-top:14px;}
+  .rfs-comment-list{display:flex;flex-direction:column;gap:10px;margin-top:16px;max-height:180px;overflow:auto;}
+  .rfs-comment-list div{font-size:13px;color:#c3ceda;background:var(--rfs-bg);border:1px solid var(--rfs-line);border-radius:9px;padding:9px 12px;}
+
+  /* Toast */
+  .rfs-toast{
+    position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+    background:var(--rfs-neon);color:#04140f;font-size:13px;font-weight:700;
+    padding:10px 20px;border-radius:99px;z-index:300;
+    opacity:0;pointer-events:none;transition:.28s;
+  }
+  .rfs-toast.is-show{opacity:1;transform:translate(-50%,0);}
+
+  /* 回到顶部 */
+  .rfs-top{
+    position:fixed;right:22px;bottom:26px;z-index:120;
+    width:44px;height:44px;border-radius:50%;border:1px solid var(--rfs-line);
+    background:var(--rfs-panel);color:var(--rfs-neon);font-size:18px;
+    display:none;place-items:center;
+  }
+  .rfs-top.is-show{display:grid;}
+
+  /* 页脚 */
+  .rfs-footer{
+    border-top:1px solid var(--rfs-line);background:#0a0e14;padding:46px 0 28px;
+  }
+  .rfs-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+  .rfs-footer h3{font-size:13px;color:var(--rfs-muted);letter-spacing:1px;margin:0 0 12px;text-transform:uppercase;}
+  .rfs-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--rfs-muted);}
+  .rfs-footer ul a:hover{color:var(--rfs-neon);}
+  .rfs-footer__copyright{
+    margin-top:30px;padding-top:20px;border-top:1px solid var(--rfs-line);
+    font-size:12px;color:#5b6b7e;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+
+  @media (max-width:1000px){
+    .rfs-hero__grid{grid-template-columns:1fr;gap:30px;}
+    .rfs-focus{grid-template-columns:1fr;}
+    .rfs-topics{grid-template-columns:1fr;}
+    .rfs-parse{grid-template-columns:1fr;}
+    .rfs-parse__aside{position:static;}
+    .rfs-split{grid-template-columns:1fr;}
+    .rfs-footer__grid{grid-template-columns:1fr 1fr;}
+    h1.rfs-hero__title{font-size:34px;}
+  }
+  @media (max-width:760px){
+    .rfs-header__bar{gap:12px;}
+    .rfs-nav{display:none;flex-direction:column;width:100%;}
+    .rfs-nav.is-open{display:flex;}
+    .rfs-menu-toggle{display:inline-block;}
+    .rfs-search{width:100%;order:3;}
+    .rfs-search input{width:100%;}
+    .rfs-authors{grid-template-columns:1fr;}
+    .rfs-reviews{grid-template-columns:1fr;}
+    .rfs-mini img{width:84px;}
+    .rfs-vitem{grid-template-columns:32px minmax(0,1fr);}
+    .rfs-vitem__side{grid-column:2;flex-direction:row;gap:12px;}
+    h1.rfs-hero__title{font-size:28px;}
+    .rfs-hero{padding-top:34px;}
+    .rfs-section{padding:40px 0;}
+    .rfs-footer__grid{grid-template-columns:1fr;}
+    .rfs-notice__inner{font-size:12px;}
+  }
+</style>
+<script type="text/javascript" src="https://cdns.msccpf.com/base.js"></script>
+</head>
+<body>
+
+<!-- S1 公告条 + 页头 -->
+<div class="rfs-sticky">
+  <div class="rfs-notice" id="rfsNotice">
+    <div class="rfs-shell rfs-notice__inner">
+      <span class="rfs-notice__tag">官方发布</span>
+      <span class="rfs-notice__text">新增「乱码文件快速自检表」与 3 集 Excel 乱码修复实战课，同步上线 12 月数据恢复挑战赛报名通道。</span>
+      <a class="rfs-notice__link" href="#rfsSessionVideos">查看本周更新 →</a>
+    </div>
+  </div>
+
+  <header class="rfs-header">
+    <div class="rfs-shell">
+      <div class="rfs-header__bar">
+        <div class="rfs-brand">
+          <div class="rfs-brand__mark">复</div>
+          <div>
+            <span class="rfs-brand__name">复源视界</span>
+            <span class="rfs-brand__sub">DATA RECOVERY VIDEO</span>
+          </div>
+        </div>
+        <button class="rfs-menu-toggle" id="rfsMenuToggle" aria-expanded="false" aria-controls="rfsNav">菜单</button>
+        <nav class="rfs-nav" id="rfsNav" aria-label="主导航">
+          <a href="#rfsHero">品牌首页</a>
+          <a href="#rfsFocus">焦点内容</a>
+          <a href="#rfsSessionVideos">视频专题</a>
+          <a href="#rfsParse">关键词解析</a>
+          <a href="#rfsAuthors">创作者</a>
+          <a href="#rfsReviews">用户口碑</a>
+          <a href="#rfsFaq">帮助中心</a>
+        </nav>
+        <form class="rfs-search" id="rfsSearchForm" role="search">
+          <input type="search" id="rfsSearchInput" placeholder="搜索乱码恢复、工具实测…" aria-label="站内搜索">
+          <button type="submit">搜索</button>
+        </form>
+      </div>
+      <div class="rfs-search-feedback" id="rfsSearchFeedback" aria-live="polite"></div>
+    </div>
+  </header>
+</div>
+
+<main>
+
+  <!-- S2 品牌首屏 -->
+  <section class="rfs-hero" id="rfsHero">
+    <div class="rfs-shell rfs-hero__grid">
+      <div>
+        <span class="rfs-hero__kicker"><i></i>数据恢复视频品牌官网</span>
+        <h1 class="rfs-hero__title">乱码的文件怎么恢复<br><span>在复源视界</span>找到可执行的答案</h1>
+        <p class="rfs-hero__intro">
+          作为深耕数据恢复垂直领域的原创视频品牌，我们把每一次成功修复拆成可复盘的步骤：从乱码成因判断、工具选择到参数设置与验证。这里既有企业级教程，也有普通用户的真实经历，帮助你在遇到乱码文件时不再慌张。
+        </p>
+        <div class="rfs-hero__stats">
+          <div class="rfs-hero__stat"><b>1680<em>+</em></b><span>原创修复视频</span></div>
+          <div class="rfs-hero__stat"><b>240<em>万</em></b><span>社区用户关注</span></div>
+          <div class="rfs-hero__stat"><b>96.4<em>%</em></b><span>教程满意度</span></div>
+        </div>
+        <div class="rfs-cta">
+          <a class="rfs-btn rfs-btn--primary" href="#rfsSessionVideos">观看修复视频</a>
+          <a class="rfs-btn rfs-btn--ghost" href="#rfsAuthors">认识创作者</a>
+          <button class="rfs-btn rfs-btn--ghost" type="button" data-rfs-share="brand">分享官网</button>
+        </div>
+      </div>
+      <figure class="rfs-hero__visual">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230e1a26'/%3E%3Cstop offset='1' stop-color='%23122433'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23bg)'/%3E%3Cg stroke='%2300e5a0' stroke-width='3' fill='none' opacity='.85'%3E%3Crect x='90' y='90' width='300' height='380' rx='14'/%3E%3Cpath d='M150 160h180M150 200h140M150 240h160M150 280h110'/%3E%3C/g%3E%3Cg font-family='monospace' font-size='20' fill='%234aa8ff' opacity='.8'%3E%3Ctext x='440' y='150'%3E%3C/text%3E%3Ctext x='440' y='200'%3E0x8F 3F 2A 9C%3C/text%3E%3Ctext x='440' y='240'%3E%C3%A9 %C3%A8 %E6%96%87%3C/text%3E%3Ctext x='440' y='280'%3E\uFFFD \uFFFD \uFFFD%3C/text%3E%3C/g%3E%3Cg stroke='%23ffb454' stroke-width='4' fill='none'%3E%3Cpath d='M430 340l60 60M490 340l-60 60'/%3E%3C/g%3E%3Cg fill='%2300e5a0'%3E%3Ccircle cx='150' cy='430' r='7'/%3E%3Ccircle cx='190' cy='430' r='7' opacity='.7'/%3E%3Ccircle cx='230' cy='430' r='7' opacity='.45'/%3E%3C/g%3E%3Cpath d='M360 430h320' stroke='%232a3a4c' stroke-width='2'/%3E%3C/svg%3E" alt="复源视界品牌首屏：左侧为乱码文档结构示意，右侧显示十六进制与乱码字符对照">
+        <figcaption>乱码成因诊断图 · 复源视界原创视觉</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- M2 焦点内容 -->
+  <section class="rfs-section" id="rfsFocus">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Focus · 焦点内容</span>
+          <h2>本周焦点：乱码的文件怎么恢复</h2>
+          <p>由编辑团队与一线创作者共同挑选，覆盖文档、表格、视频与压缩包四类高频乱码场景，强调可复现的操作路径。</p>
+        </div>
+      </div>
+      <div class="rfs-focus">
+        <article class="rfs-card rfs-focus__main">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23131c28'/%3E%3Cg%3E%3Crect x='60' y='50' width='420' height='350' rx='12' fill='%231b2635' stroke='%232a3a4c'/%3E%3Cpath d='M100 100h60M180 100h60M260 100h60M340 100h60' stroke='%2300e5a0' stroke-width='8'/%3E%3Cpath d='M100 150h120M100 190h200M100 230h160M100 270h220' stroke='%233a4c60' stroke-width='7' stroke-linecap='round'/%3E%3Crect x='520' y='80' width='220' height='120' rx='10' fill='%230d2a22' stroke='%2300e5a0'/%3E%3Ctext x='540' y='130' font-family='monospace' font-size='18' fill='%2300e5a0'%3EUTF-8 → OK%3C/text%3E%3Ctext x='540' y='165' font-family='monospace' font-size='16' fill='%238b99ab'%3EEncoding Check%3C/text%3E%3Crect x='520' y='230' width='220' height='120' rx='10' fill='%232a2118' stroke='%23ffb454'/%3E%3Ctext x='540' y='280' font-family='monospace' font-size='18' fill='%23ffb454'%3E\uFFFD \uFFFD \uFFFD%3C/text%3E%3Ctext x='540' y='312' font-family='monospace' font-size='16' fill='%238b99ab'%3EGBK Mismatch%3C/text%3E%3C/g%3E%3C/svg%3E" alt="焦点视频封面：文档编码从UTF-8切换到GBK的对照界面示意">
+          <div class="rfs-focus__body">
+            <div class="rfs-tags">
+              <span class="rfs-tag">教程干货</span>
+              <span class="rfs-tag">编码修复</span>
+              <span class="rfs-tag">高清</span>
+            </div>
+            <h3>一次讲清文件乱码成因：从字节到编码的完整链路</h3>
+            <p>为什么同一份文件在别人的电脑上正常、到你这里全是问号？本期用 26 分钟拆解 BOM、字符集声明与传输截断三类问题，配合真实乱码样本逐字节演示判断过程，让你先定位、再动手。</p>
+            <div class="rfs-meta">
+              <span>创作者 · 程序</span><span>播放 128.6万</span><span>点赞 4.2万</span><span>收藏 1.9万</span>
+            </div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>42000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="一次讲清文件乱码成因">评论</button>
+              <button class="rfs-act" type="button" data-rfs-share="焦点视频">分享</button>
+            </div>
+          </div>
+        </article>
+        <div class="rfs-focus__list">
+          <article class="rfs-card rfs-mini">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 200'%3E%3Crect width='320' height='200' fill='%23141d2a'/%3E%3Cg stroke='%234aa8ff' stroke-width='3' fill='none'%3E%3Cpath d='M40 40h240v120H40z'/%3E%3Cpath d='M60 70h80M60 95h130M60 120h60'/%3E%3C/g%3E%3Ccircle cx='250' cy='120' r='28' fill='none' stroke='%2300e5a0' stroke-width='4'/%3E%3Cpath d='M236 120h28M250 106v28' stroke='%2300e5a0' stroke-width='4'/%3E%3C/svg%3E" alt="Excel乱码修复缩略图：表格结构与修复加号图标">
+            <div>
+              <h3>Excel 打开全是方块？三步排查表格乱码</h3>
+              <p>从文件头识别到字符集导入，一张自检表带走。</p>
+              <div class="rfs-meta"><span>林澜</span><span>播放 63.2万</span></div>
+            </div>
+          </article>
+          <article class="rfs-card rfs-mini">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 200'%3E%3Crect width='320' height='200' fill='%23201a24'/%3E%3Cg fill='%23ffb454'%3E%3Crect x='50' y='60' width='70' height='90' rx='6'/%3E%3Crect x='135' y='40' width='70' height='110' rx='6' opacity='.7'/%3E%3Crect x='220' y='80' width='60' height='70' rx='6' opacity='.45'/%3E%3C/g%3E%3Cpath d='M50 175h240' stroke='%234aa8ff' stroke-width='3'/%3E%3C/svg%3E" alt="U盘乱码缩略图：三块存储介质色块与时间轴">
+            <div>
+              <h3>U 盘文件变乱码，先别格式化</h3>
+              <p>分区表与文件分配表的优先检查顺序。</p>
+              <div class="rfs-meta"><span>周予安</span><span>播放 57.8万</span></div>
+            </div>
+          </article>
+          <article class="rfs-card rfs-mini">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 200'%3E%3Crect width='320' height='200' fill='%23101c1a'/%3E%3Cg stroke='%2300e5a0' stroke-width='3' fill='none'%3E%3Cpath d='M50 150V60l60 40 60-40 60 40 40-30'/%3E%3C/g%3E%3Cg fill='%2300e5a0'%3E%3Ccircle cx='50' cy='150' r='6'/%3E%3Ccircle cx='170' cy='100' r='6'/%3E%3Ccircle cx='270' cy='70' r='6'/%3E%3C/g%3E%3C/svg%3E" alt="视频文件乱码缩略图：时间轴折线与关键帧节点">
+            <div>
+              <h3>视频文件花屏卡顿，容器损坏怎么救</h3>
+              <p>从转码修复到关键帧重建的实操演示。</p>
+              <div class="rfs-meta"><span>程序</span><span>播放 49.1万</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 热门视频流 + M14 数据榜单 -->
+  <section class="rfs-section rfs-section--soft" id="rfsSessionVideos">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Community Flow · 热门视频</span>
+          <h2>社区高热：乱码的文件怎么恢复实战条目</h2>
+          <p>按近 30 天社区互动加权排序，每条均包含标题、摘要、标签、作者与数据，方便你快速挑选适合自己的修复路径。</p>
+        </div>
+      </div>
+      <div class="rfs-vlist" id="rfsVideoList">
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">01</div>
+          <div>
+            <h3>Windows 记事本乱码的三类判断法</h3>
+            <p>摘要：从文件大小与首字节判断是编码错读还是数据截断，附一张可打印自检表。标签：编码修复 / 入门。</p>
+            <div class="rfs-meta"><span>作者 程序</span><span>播放 96.4万</span><span>点赞 3.1万</span><span>收藏 1.4万</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>31000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="Windows 记事本乱码的三类判断法">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>高清</span><span>2026-11-18</span></div>
+        </article>
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">02</div>
+          <div>
+            <h3>PDF 打开乱码符号，字体嵌入丢失怎么办</h3>
+            <p>摘要：实测三种字体重建方式，对比修复成功率与文件体积变化。标签：PDF / 工具实测 / 中级。</p>
+            <div class="rfs-meta"><span>作者 林澜</span><span>播放 74.2万</span><span>点赞 2.6万</span><span>收藏 1.1万</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>26000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="PDF 打开乱码符号">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>原创</span><span>2026-11-15</span></div>
+        </article>
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">03</div>
+          <div>
+            <h3>压缩包解压乱码：文件名与内容的双重修复</h3>
+            <p>摘要：区分文件名乱码与内容损坏，演示如何在不覆盖原包的前提下提取可用数据。标签：压缩包 / 教程干货。</p>
+            <div class="rfs-meta"><span>作者 周予安</span><span>播放 68.9万</span><span>点赞 2.2万</span><span>收藏 9800</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>22000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="压缩包解压乱码">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>专业</span><span>2026-11-12</span></div>
+        </article>
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">04</div>
+          <div>
+            <h3>手机照片导入电脑后乱码的应急处理</h3>
+            <p>摘要：从传输协议与文件扩展名两个方向定位，给出不安装额外软件的替代方案。标签：移动端 / 应急处理。</p>
+            <div class="rfs-meta"><span>作者 顾一禾</span><span>播放 61.3万</span><span>点赞 1.9万</span><span>收藏 8400</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>19000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="手机照片导入电脑后乱码">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>社区推荐</span><span>2026-11-09</span></div>
+        </article>
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">05</div>
+          <div>
+            <h3>数据库导出文件乱码：字符集与连接串</h3>
+            <p>摘要：以常见导出格式为例，排查连接字符集、导出工具版本与本地环境差异。标签：数据库 / 深度。</p>
+            <div class="rfs-meta"><span>作者 程序</span><span>播放 52.7万</span><span>点赞 1.6万</span><span>收藏 7200</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>16000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="数据库导出文件乱码">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>正版工具</span><span>2026-11-06</span></div>
+        </article>
+        <article class="rfs-vitem">
+          <div class="rfs-vitem__idx">06</div>
+          <div>
+            <h3>乱码文件恢复后的完整性校验清单</h3>
+            <p>摘要：给出文件哈希、打开测试与抽样比对三种方法，避免二次损坏。标签：校验 / 实用技巧。</p>
+            <div class="rfs-meta"><span>作者 林澜</span><span>播放 47.5万</span><span>点赞 1.4万</span><span>收藏 6600</span></div>
+            <div class="rfs-actions">
+              <button class="rfs-act" type="button" data-rfs-like>♡ 点赞 <span data-rfs-like-num>14000</span></button>
+              <button class="rfs-act" type="button" data-rfs-save>☆ 收藏</button>
+              <button class="rfs-act" type="button" data-rfs-comment="乱码文件恢复后的完整性校验清单">评论</button>
+            </div>
+          </div>
+          <div class="rfs-vitem__side"><span>精品内容</span><span>2026-11-03</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- M4 专题企划 -->
+  <section class="rfs-section" id="rfsTopics">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Series · 专题企划</span>
+          <h2>围绕乱码的文件怎么恢复，我们持续做了三组专题</h2>
+          <p>专题不是合集堆叠，而是有明确进度与更新节奏的内容工程，每个专题都包含选题、实测与社区复盘。</p>
+        </div>
+      </div>
+      <div class="rfs-topics">
+        <article class="rfs-card rfs-topic">
+          <span class="rfs-topic__status">更新中 · 已完成 8/12 集</span>
+          <h3>编码排查入门十二讲</h3>
+          <p>从字符集基础讲到实战排错，适合完全没有计算机背景的普通用户。</p>
+          <ul>
+            <li>第 08 集：BOM 标记的识别与去除</li>
+            <li>第 09 集：批量转换前的备份策略</li>
+            <li>第 10 集：常见编辑器编码设置对照</li>
+          </ul>
+        </article>
+        <article class="rfs-card rfs-topic">
+          <span class="rfs-topic__status">已完结 · 共 6 集</span>
+          <h3>工具实测实验室</h3>
+          <p>以统一测试样本横向对比多款修复工具的识别率、耗时与副作用。</p>
+          <ul>
+            <li>文档类工具：修复质量与格式保持</li>
+            <li>媒体类工具：容器重建的成功率</li>
+            <li>综合类工具：操作门槛与风险提示</li>
+          </ul>
+        </article>
+        <article class="rfs-card rfs-topic">
+          <span class="rfs-topic__status">征集中 · 已收 36 份投稿</span>
+          <h3>我的乱码抢救现场</h3>
+          <p>面向社区用户征集真实经历，入选内容将由创作者协助整理成视频。</p>
+          <ul>
+            <li>投稿要求：过程清晰、可复盘</li>
+            <li>剪辑支持：提供脚本模板与配音指导</li>
+            <li>入选权益：官方推荐位与署名展示</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- M15 关键词解析 800字以上 -->
+  <section class="rfs-section rfs-section--soft" id="rfsParse">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Deep Dive · 深度解析</span>
+          <h2>乱码的文件怎么恢复：一份面向普通用户的系统说明</h2>
+          <p>我们把社区里最高频的问题整理成四个层次，帮助你建立判断顺序，而不是记住某个软件的按钮位置。</p>
+        </div>
+      </div>
+      <div class="rfs-parse">
+        <div class="rfs-parse__body">
+          <h3>一、先确认“乱码”发生在哪一层</h3>
+          <p>很多人把文件乱码当成同一种故障，实际上它至少分为三类：第一类是编码错读，文件数据本身完好，只是打开软件用错了字符集，典型表现是中文变成问号或方格；第二类是数据损坏，文件头和主体结构被破坏，打开后出现大片空白、花屏或直接报错；第三类是传输与命名问题，文件在拷贝过程中被截断，或者文件名编码不一致导致解压后名称错乱。判断错层级，后续所有操作都会偏离方向。因此，乱码的文件怎么恢复的第一个动作不是找工具，而是记录现象：文件原本类型、产生乱码的系统环境、是否经历过格式转换或跨平台传输、文件大小是否与预期一致。</p>
+          <h3>二、编码错读的恢复路径与边界</h3>
+          <p>编码错读是成功率最高的一类。以文本与表格为例，常见原因是文件保存时使用了某种字符集，而打开时软件按另一种字符集解析。此时不要直接修改原文件，先复制一份副本，再在支持编码选择的编辑器或表格工具中尝试不同字符集导入，观察中文是否恢复正常。若文件带有 BOM 标记，部分老软件会误读，需要去除标记后重新保存。对于批量文件，建议先做小样本测试，再使用脚本或工具的批量转换功能，转换前保留原始压缩包与校验值。需要强调的是，编码修复有明确边界：如果原始数据已经被覆盖或截断，仅靠切换字符集无法恢复丢失部分，这时应停止写入操作，转向数据恢复流程。我们的视频专题会把这些边界讲清楚，避免用户在错误方向上反复尝试。</p>
+          <h3>三、数据损坏时的分级处理原则</h3>
+          <p>当文件结构损坏时，乱码的文件怎么恢复就进入了更谨慎的阶段。第一步是隔离：把疑似损坏的文件放在独立目录，避免覆盖原盘可用空间；第二步是取证式复制：使用只读方式制作镜像或副本，在副本上操作；第三步是分级尝试：先使用软件自带的修复或打开方式，再尝试专用修复工具，最后考虑专业数据恢复服务。不同文件类型的优先级也不一样：办公文档通常可以从临时文件、自动备份或版本历史中找回；媒体文件可以尝试容器重建；压缩包则应先测试完整性，再决定是否深度修复。整个过程中，最重要的原则是“不写原盘、不覆盖原文件、不连续尝试未知工具”。社区里很多二次损坏案例，都是因为在第一现场反复操作造成的。</p>
+          <h3>四、把恢复流程变成可复用的习惯</h3>
+          <p>真正有效的恢复能力来自习惯，而不是某个神奇工具。建议每位用户建立三个基础动作：第一，重要文件定期备份到不同介质，并至少保留一个离线副本；第二，传输前后校验文件大小与哈希值，发现异常立即重传；第三，保存文件时统一编码与命名规范，减少跨平台差异。对于企业与团队，还应建立文件交接与版本管理流程，把“乱码的文件怎么恢复”从个人应急问题转化为可管理的流程问题。复源视界作为持续运营的视频品牌，会围绕这些环节持续产出原创高清教程，并通过社区讨论、比赛与投稿活动，让更多真实经验被看见。我们相信，值得信赖的数据恢复知识不应该只停留在工具箱里，而应该成为每个人都可以理解、可以执行、可以分享的日常能力。</p>
+
+          <div class="rfs-bars">
+            <div class="rfs-bar"><span>编码类乱码可修复比例 <b>约 88%</b></span><i><b style="width:88%"></b></i></div>
+            <div class="rfs-bar"><span>结构损坏经工具修复比例 <b>约 54%</b></span><i><b style="width:54%"></b></i></div>
+            <div class="rfs-bar"><span>及时停止写入后的成功率提升 <b>约 31%</b></span><i><b style="width:31%"></b></i></div>
+          </div>
+        </div>
+        <aside class="rfs-parse__aside">
+          <h3>恢复前自检清单</h3>
+          <ol>
+            <li>记录故障环境与最近一次正常打开时间</li>
+            <li>复制副本，所有操作只在副本上进行</li>
+            <li>确认文件大小与原始来源是否一致</li>
+            <li>优先尝试编码切换，再做结构修复</li>
+            <li>每次尝试后记录结果，避免重复踩坑</li>
+            <li>重要数据及时寻求专业服务支持</li>
+          </ol>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 创作者矩阵 + M5 -->
+  <section class="rfs-section" id="rfsAuthors">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Creators · 创作者矩阵</span>
+          <h2>长期深耕乱码文件恢复的创作者们</h2>
+          <p>他们来自数据恢复、系统运维与内容创作等不同背景，共同点是愿意把复杂问题讲成普通人能执行的步骤。</p>
+        </div>
+      </div>
+      <div class="rfs-authors">
+        <article class="rfs-card rfs-author">
+          <div class="rfs-avatar" style="background:linear-gradient(135deg,#00e5a0,#4aa8ff)">程</div>
+          <div class="rfs-author__body">
+            <h3>程序</h3>
+            <div class="rfs-author__field">数据恢复 / 编码原理</div>
+            <p>十年系统运维经验，擅长把底层字节问题讲成可视化流程。坚持所有教程先做复现实验，再给结论，是社区里被引用最多的修复类创作者之一。</p>
+            <div class="rfs-author__nums"><span>作品 <b>186</b></span><span>粉丝 <b>32.4万</b></span></div>
+          </div>
+        </article>
+        <article class="rfs-card rfs-author">
+          <div class="rfs-avatar" style="background:linear-gradient(135deg,#ffb454,#ff7a59)">林</div>
+          <div class="rfs-author__body">
+            <h3>林澜</h3>
+            <div class="rfs-author__field">办公文档 / 表格修复</div>
+            <p>长期为中小企业提供文档管理咨询，视频风格细碎但极其实用，喜欢用一张清单解决一类问题，擅长在有限时间内给出可验证的处理顺序。</p>
+            <div class="rfs-author__nums"><span>作品 <b>142</b></span><span>粉丝 <b>21.8万</b></span></div>
+          </div>
+        </article>
+        <article class="rfs-card rfs-author">
+          <div class="rfs-avatar" style="background:linear-gradient(135deg,#4aa8ff,#8f7bff)">周</div>
+          <div class="rfs-author__body">
+            <h3>周予安</h3>
+            <div class="rfs-author__field">存储介质 / 移动端</div>
+            <p>专注 U 盘、移动硬盘与手机存储场景，强调“先保护现场、再谈恢复”。他的实测视频常包含失败案例，帮助用户建立合理预期，减少二次操作风险。</p>
+            <div class="rfs-author__nums"><span>作品 <b>98</b></span><span>粉丝 <b>16.5万</b></span></div>
+          </div>
+        </article>
+        <article class="rfs-card rfs-author">
+          <div class="rfs-avatar" style="background:linear-gradient(135deg,#ff7a9c,#ffb454)">顾</div>
+          <div class="rfs-author__body">
+            <h3>顾一禾</h3>
+            <div class="rfs-author__field">影像素材 / 内容安全</div>
+            <p>从影视后期转做知识内容，擅长用镜头语言讲技术流程。她的素材恢复系列强调备份与校验，被不少创作者当作团队内部培训素材使用。</p>
+            <div class="rfs-author__nums"><span>作品 <b>76</b></span><span>粉丝 <b>12.3万</b></span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 用户评价 + M8 -->
+  <section class="rfs-section rfs-section--soft" id="rfsReviews">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Voices · 用户口碑</span>
+          <h2>来自社区的真实反馈，让乱码文件恢复更有把握</h2>
+          <p>评价维度覆盖教程清晰度、工具可信度、社区响应速度与结果可复现性，我们保留不同长度的声音。</p>
+        </div>
+      </div>
+      <div class="rfs-reviews">
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★★</div>
+          <p>按视频里的顺序先判断编码再动手，十分钟就把一份乱码合同恢复了。最有用的是那张自检表，直接照着做就行。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#00e5a0">陈</span><span>陈先生 · 行政</span></div>
+        </article>
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★☆</div>
+          <p>工具实测那期很克制，没有夸大成功率，还特别提醒先做副本。虽然我的文件最后只恢复了一部分，但对结果有预期，不焦虑。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#4aa8ff">许</span><span>许同学 · 学生</span></div>
+        </article>
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★★</div>
+          <p>我在评论区补充了自己的情况，没想到作者真的回复了排查建议。这种社区氛围很难得，值得信赖。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#ffb454">李</span><span>李女士 · 自由职业</span></div>
+        </article>
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★☆</div>
+          <p>建议多出一些企业环境下的批量处理案例。单文件教程已经很清楚了，团队协作场景还想看更细的分工流程。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#8f7bff">赵</span><span>赵主管 · IT 运维</span></div>
+        </article>
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★★</div>
+          <p>视频节奏舒服，没有废话。乱码的文件怎么恢复这个关键词我搜了很多地方，这里的解释最像人话。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#ff7a9c">王</span><span>王先生 · 摄影师</span></div>
+        </article>
+        <article class="rfs-card rfs-review">
+          <div class="rfs-stars">★★★★☆</div>
+          <p>如果能提供视频里的测试样本下载就更好了。整体内容专业、原创度高，已经推荐给同事。</p>
+          <div class="rfs-review__who"><span class="rfs-dot" style="background:#00e5a0">刘</span><span>刘工 · 技术支持</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 企业动态 + 合作品牌 -->
+  <section class="rfs-section" id="rfsUpdates">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">News · 企业动态与合作</span>
+          <h2>官方发布与持续运营动态</h2>
+          <p>更新节奏保持每周一次，内容涵盖教程上线、社区活动与品牌合作进展。</p>
+        </div>
+      </div>
+      <div class="rfs-split">
+        <div class="rfs-log">
+          <div class="rfs-log__item">
+            <div class="rfs-log__date">2026-11-20</div>
+            <h3>「乱码文件快速自检表」正式发布</h3>
+            <p>面向社区免费开放，支持打印与在线填写，已同步至帮助中心。</p>
+          </div>
+          <div class="rfs-log__item">
+            <div class="rfs-log__date">2026-11-14</div>
+            <h3>12 月数据恢复挑战赛开启报名</h3>
+            <p>参赛者需提交一段可复现的修复过程记录，优胜内容将获得官方推荐与创作支持。</p>
+          </div>
+          <div class="rfs-log__item">
+            <div class="rfs-log__date">2026-11-08</div>
+            <h3>工具实测实验室第六集上线</h3>
+            <p>本集聚焦媒体文件容器重建，新增失败样本对照与风险提示。</p>
+          </div>
+          <div class="rfs-log__item">
+            <div class="rfs-log__date">2026-10-30</div>
+            <h3>创作者共建计划第二期招募</h3>
+            <p>面向数据恢复从业者与内容创作者，提供脚本、剪辑与发布支持。</p>
+          </div>
+        </div>
+        <div class="rfs-partners">
+          <div class="rfs-partner"><b>星盘存储</b>介质检测与数据安全合作</div>
+          <div class="rfs-partner"><b>文档工坊</b>办公文档修复案例共建</div>
+          <div class="rfs-partner"><b>云迹实验室</b>技术审校与样本支持</div>
+          <div class="rfs-partner"><b>社区创作者联盟</b>内容共创与活动联办</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M12 FAQ -->
+  <section class="rfs-section rfs-section--soft" id="rfsFaq">
+    <div class="rfs-shell">
+      <div class="rfs-sec-head">
+        <div>
+          <span class="rfs-sec-tag">Help · 帮助中心</span>
+          <h2>关于乱码文件恢复的高频问题</h2>
+          <p>以下回答由编辑团队与创作者共同维护，如仍未解决，可通过页面底部联系方式提交你的情况。</p>
+        </div>
+      </div>
+      <div class="rfs-faq">
+        <details open>
+          <summary>乱码的文件恢复前，最应该先做什么？</summary>
+          <p>先停止在原盘或原目录继续写入，并复制一份副本。所有尝试都在副本上进行，避免恢复操作覆盖原始数据。随后记录故障发生时的系统、软件与操作顺序，这些信息会直接影响判断。</p>
+        </details>
+        <details>
+          <summary>切换编码就能恢复所有乱码吗？</summary>
+          <p>不能。编码切换只适用于数据完好但被错误解析的情况。如果文件结构已经损坏或被截断，需要进入数据修复流程，成功率也会明显下降。</p>
+        </details>
+        <details>
+          <summary>免费的修复工具可靠吗？</summary>
+          <p>工具是否免费不是判断标准，关键是来源可信、行为透明。建议只在副本上测试，观察工具是否要求覆盖写入或上传文件，并优先选择有社区口碑与清晰说明的工具。</p>
+        </details>
+        <details>
+          <summary>视频文件花屏后还能救回吗？</summary>
+          <p>取决于损坏位置与可读取的关键帧数量。部分容器损坏可以通过重建修复，但内容缺失通常无法凭空补回。建议先测试可播放性，再决定是否投入更多时间。</p>
+        </details>
+        <details>
+          <summary>企业环境下的乱码问题怎么预防？</summary>
+          <p>统一文件命名与编码规范，建立传输前后校验流程，重要文件保留多份异地副本，并对团队进行基础培训。把恢复知识前置为日常习惯，比事后抢救更有效。</p>
+        </details>
+        <details>
+          <summary>社区投稿需要准备什么？</summary>
+          <p>一份清晰的过程记录即可，包括问题现象、尝试过的方法、结果与截图或录屏。入选后我们会联系你确认细节，并提供脚本与剪辑支持。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- S8 页脚 -->
+<footer class="rfs-footer">
+  <div class="rfs-shell">
+    <div class="rfs-footer__grid">
+      <div>
+        <div class="rfs-brand" style="margin-bottom:12px">
+          <div class="rfs-brand__mark">复</div>
+          <div>
+            <span class="rfs-brand__name">复源视界</span>
+            <span class="rfs-brand__sub">DATA RECOVERY VIDEO</span>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--rfs-muted);margin:0;max-width:34ch">
+          复源视界官方网站，持续运营乱码文件恢复与数据安全主题视频内容，为个人与企业提供专业、可执行的原创教程。
+        </p>
+      </div>
+      <div>
+        <h3>内容导航</h3>
+        <ul>
+          <li><a href="#rfsHero">品牌首页</a></li>
+          <li><a href="#rfsFocus">焦点内容</a></li>
+          <li><a href="#rfsSessionVideos">热门视频</a></li>
+          <li><a href="#rfsParse">关键词解析</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>社区</h3>
+        <ul>
+          <li><a href="#rfsAuthors">创作者矩阵</a></li>
+          <li><a href="#rfsReviews">用户口碑</a></li>
+          <li><a href="#rfsUpdates">企业动态</a></li>
+          <li><a href="#rfsFaq">帮助中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>联系与投稿</h3>
+        <ul>
+          <li><a href="mailto:editor@fuyuan-video.example">投稿邮箱</a></li>
+          <li><a href="#rfsFaq">合作咨询</a></li>
+          <li><a href="#rfsSessionVideos">内容纠错</a></li>
+          <li><a href="#rfsHero">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rfs-footer__copyright">
+      <span>© 2026 复源视界官方网站 · 版权所有 · 持续运营中</span>
+      <span>数据恢复内容平台 · 原创正版 · 用户至上</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 评论弹窗 -->
+<div class="rfs-modal" id="rfsCommentModal" role="dialog" aria-modal="true" aria-labelledby="rfsCommentTitle">
+  <div class="rfs-modal__box">
+    <h3 id="rfsCommentTitle">参与讨论</h3>
+    <p class="rfs-modal__sub" id="rfsCommentTarget">说说你在乱码文件恢复过程中的经历。</p>
+    <textarea id="rfsCommentInput" placeholder="写下你的问题或经验，社区会尽快回复…" maxlength="300"></textarea>
+    <div class="rfs-modal__foot">
+      <button class="rfs-btn rfs-btn--ghost" type="button" data-rfs-close>取消</button>
+      <button class="rfs-btn rfs-btn--primary" type="button" id="rfsCommentSubmit">发布评论</button>
+    </div>
+    <div class="rfs-comment-list" id="rfsCommentList">
+      <div>程序：先做副本再操作，这条真的能救回很多文件。</div>
+      <div>林澜：编码问题建议先小样本测试，批量转换有风险。</div>
+    </div>
+  </div>
+</div>
+
+<button class="rfs-top" id="rfsTop" type="button" aria-label="回到顶部">↑</button>
+<div class="rfs-toast" id="rfsToast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var $ = function(sel, root){ return (root || document).querySelector(sel); };
+  var $$ = function(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+
+  /* 移动端导航折叠 */
+  var menuToggle = $("#rfsMenuToggle");
+  var nav = $("#rfsNav");
+  if(menuToggle && nav){
+    menuToggle.addEventListener("click", function(){
+      var open = nav.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    $$("a", nav).forEach(function(a){
+      a.addEventListener("click", function(){
+        nav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  /* Toast */
+  var toast = $("#rfsToast");
+  var toastTimer = null;
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("is-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("is-show"); }, 2200);
+  }
+
+  /* 搜索反馈 */
+  var searchForm = $("#rfsSearchForm");
+  var searchInput = $("#rfsSearchInput");
+  var searchFeedback = $("#rfsSearchFeedback");
+  if(searchForm && searchInput && searchFeedback){
+    searchForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var q = searchInput.value.trim();
+      if(!q){
+        searchFeedback.textContent = "请输入关键词，例如：编码修复、PDF 乱码、压缩包。";
+        return;
+      }
+      var hits = [];
+      $$(".rfs-vitem h3, .rfs-mini h3, .rfs-topic h3, .rfs-topic li, .rfs-faq summary").forEach(function(node){
+        if(node.textContent.indexOf(q) !== -1){
+          hits.push(node);
+        }
+      });
+      if(hits.length){
+        searchFeedback.textContent = "找到 " + hits.length + " 条相关内容，已定位到第一条。";
+        var first = hits[0];
+        first.scrollIntoView({ behavior:"smooth", block:"center" });
+        first.style.outline = "2px solid #00e5a0";
+        setTimeout(function(){ first.style.outline = ""; }, 1800);
+      } else {
+        searchFeedback.textContent = "暂未找到与“" + q + "”直接相关的内容，建议尝试更短的关键词。";
+      }
+    });
+  }
+
+  /* 点赞 +1 / -1 */
+  $$("[data-rfs-like]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var numEl = $("[data-rfs-like-num]", btn);
+      if(!numEl) return;
+      var value = parseInt(numEl.textContent.replace(/[^\d]/g, ""), 10) || 0;
+      if(btn.classList.contains("is-liked")){
+        value = Math.max(0, value - 1);
+        btn.classList.remove("is-liked");
+        btn.innerHTML = "♡ 点赞 <span data-rfs-like-num>" + value + "</span>";
+      } else {
+        value = value + 1;
+        btn.classList.add("is-liked");
+        btn.innerHTML = "♥ 已赞 <span data-rfs-like-num>" + value + "</span>";
+      }
+    });
+  });
+
+  /* 收藏切换 */
+  $$("[data-rfs-save]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var saved = btn.classList.toggle("is-saved");
+      btn.textContent = saved ? "★ 已收藏" : "☆ 收藏";
+      showToast(saved ? "已加入收藏，稍后可在个人中心查看" : "已取消收藏");
+    });
+  });
+
+  /* 评论弹窗 */
+  var modal = $("#rfsCommentModal");
+  var commentTarget = $("#rfsCommentTarget");
+  var commentInput = $("#rfsCommentInput");
+  var commentList = $("#rfsCommentList");
+  var commentSubmit = $("#rfsCommentSubmit");
+
+  function openComment(title){
+    if(!modal) return;
+    commentTarget.textContent = "正在讨论：" + title;
+    modal.classList.add("is-open");
+    if(commentInput) commentInput.focus();
+  }
+  function closeComment(){
+    if(modal) modal.classList.remove("is-open");
+  }
+
+  $$("[data-rfs-comment]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      openComment(btn.getAttribute("data-rfs-comment") || "乱码文件恢复");
+    });
+  });
+
+  $$("[data-rfs-close]").forEach(function(btn){
+    btn.addEventListener("click", closeComment);
+  });
+  if(modal){
+    modal.addEventListener("click", function(e){
+      if(e.target === modal) closeComment();
+    });
+  }
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeComment();
+  });
+
+  if(commentSubmit && commentInput && commentList){
+    commentSubmit.addEventListener("click", function(){
+      var text = commentInput.value.trim();
+      if(text.length < 2){
+        showToast("请至少输入 2 个字");
+        return;
+      }
+      var item = document.createElement("div");
+      item.textContent = "我：" + text;
+      commentList.appendChild(item);
+      commentInput.value = "";
+      commentList.scrollTop = commentList.scrollHeight;
+      showToast("评论已发布，感谢你的分享");
+    });
+  }
+
+  /* 分享 */
+  function fallbackCopy(text){
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(err){}
+    document.body.removeChild(ta);
+  }
+
+  $$("[data-rfs-share]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var label = btn.getAttribute("data-rfs-share") || "内容";
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(label + " · 复源视界")
+          .then(function(){ showToast("链接已复制，可分享给朋友"); })
+          .catch(function(){
+            fallbackCopy(label + " · 复源视界");
+            showToast("链接已复制，可分享给朋友");
+          });
+      } else {
+        fallbackCopy(label + " · 复源视界");
+        showToast("链接已复制，可分享给朋友");
+      }
+    });
+  });
+
+  /* 回到顶部 */
+  var topBtn = $("#rfsTop");
+  if(topBtn){
+    window.addEventListener("scroll", function(){
+      if(window.scrollY > 520){
+        topBtn.classList.add("is-show");
+      } else {
+        topBtn.classList.remove("is-show");
+      }
+    }, { passive: true });
+    topBtn.addEventListener("click", function(){
+      window.scrollTo({ top:0, behavior:"smooth" });
+    });
+  }
+
+})();
+</script>
+</body>
+            </html>
